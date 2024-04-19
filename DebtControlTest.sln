@@ -6,10 +6,58 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2DCDA707-F6BA-47BD-916A-33B607AC19C8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{D5729626-03FC-4548-A1E4-ED184774D0B7}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtControl.Api", "src\DebtControl.Api\DebtControl.Api.csproj", "{92AEFF2F-7CD6-463E-AA4C-DD2D7C1EB011}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtControl.Application", "src\DebtControl.Application\DebtControl.Application.csproj", "{65648E97-9136-45AB-B83D-25DF757A473E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtControl.Domain", "src\DebtControl.Domain\DebtControl.Domain.csproj", "{00F8C689-E225-4579-AF36-7F9D2D9CCF6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtControl.Infrastructure", "src\DebtControl.Infrastructure\DebtControl.Infrastructure.csproj", "{252D51BC-0842-4246-A119-663A1D2B7751}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtControl.Dto", "src\DebtControl.Dto\DebtControl.Dto.csproj", "{0F226A69-D3DA-4F0B-8236-AB6054BECF13}"
 EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92AEFF2F-7CD6-463E-AA4C-DD2D7C1EB011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92AEFF2F-7CD6-463E-AA4C-DD2D7C1EB011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92AEFF2F-7CD6-463E-AA4C-DD2D7C1EB011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92AEFF2F-7CD6-463E-AA4C-DD2D7C1EB011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65648E97-9136-45AB-B83D-25DF757A473E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65648E97-9136-45AB-B83D-25DF757A473E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65648E97-9136-45AB-B83D-25DF757A473E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65648E97-9136-45AB-B83D-25DF757A473E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00F8C689-E225-4579-AF36-7F9D2D9CCF6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00F8C689-E225-4579-AF36-7F9D2D9CCF6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00F8C689-E225-4579-AF36-7F9D2D9CCF6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00F8C689-E225-4579-AF36-7F9D2D9CCF6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{252D51BC-0842-4246-A119-663A1D2B7751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252D51BC-0842-4246-A119-663A1D2B7751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252D51BC-0842-4246-A119-663A1D2B7751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252D51BC-0842-4246-A119-663A1D2B7751}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F226A69-D3DA-4F0B-8236-AB6054BECF13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F226A69-D3DA-4F0B-8236-AB6054BECF13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F226A69-D3DA-4F0B-8236-AB6054BECF13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F226A69-D3DA-4F0B-8236-AB6054BECF13}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{92AEFF2F-7CD6-463E-AA4C-DD2D7C1EB011} = {2DCDA707-F6BA-47BD-916A-33B607AC19C8}
+		{65648E97-9136-45AB-B83D-25DF757A473E} = {2DCDA707-F6BA-47BD-916A-33B607AC19C8}
+		{00F8C689-E225-4579-AF36-7F9D2D9CCF6A} = {2DCDA707-F6BA-47BD-916A-33B607AC19C8}
+		{252D51BC-0842-4246-A119-663A1D2B7751} = {2DCDA707-F6BA-47BD-916A-33B607AC19C8}
+		{0F226A69-D3DA-4F0B-8236-AB6054BECF13} = {2DCDA707-F6BA-47BD-916A-33B607AC19C8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51DA8113-2FAB-4124-84D9-E7240708B074}
