@@ -1,7 +1,5 @@
-﻿using CSharpFunctionalExtensions;
-using DebtControl.Domain.Entities;
+﻿using DebtControl.Domain.Entities;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,7 +8,11 @@ namespace DebtControl.Domain.Interfaces
 {
 	public interface IShiftRepository
 	{
-		Task<Result<ICollection<Shift>>> GetEmployeeShifts(Guid employeeId, CancellationToken ct);
+		Task CreateShift(Shift shift, CancellationToken ct);
+		Task UpdateShift(Shift shift, CancellationToken ct);
 
+		Task<ICollection<Shift>> GetEmployeeShifts(Guid employeeId, CancellationToken ct);
+
+		Task<Shift> GetLastShiftAsync(Guid employeeId, CancellationToken ct);
 	}
 }

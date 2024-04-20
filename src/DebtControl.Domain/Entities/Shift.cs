@@ -8,7 +8,7 @@ namespace DebtControl.Domain.Entities
 		public DateTime? StartTime { get; set; }
 		public DateTime? EndTime { get; set; }
 
-		public double? HoursWorked { get; set; }
+		public TimeSpan? HoursWorked { get; set; }
 
 		public Guid EmployeeId { get; set; }
 		public Employee Employee { get; set; }

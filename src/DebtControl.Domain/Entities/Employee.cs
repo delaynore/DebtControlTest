@@ -1,12 +1,11 @@
 ﻿using CSharpFunctionalExtensions;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace DebtControl.Domain.Entities
 {
 
-    public class Employee
+	public class Employee
     {
         public Guid Id { get; set; }
 
@@ -32,12 +31,24 @@ namespace DebtControl.Domain.Entities
 			Position = position;
 		}
 
-		public static Result<Employee> Create(Guid id, string firstName, string lastName, string patronymic, Position position) 
+		public static Result<Employee> Create(string firstName, string lastName, string patronymic, Position position) 
 		{
-			// todo validation
-			return new Employee(id, firstName, lastName, patronymic, position);
+			if (string.IsNullOrEmpty(firstName))
+			{
+				return Result.Failure<Employee>("The employee first name must be specified");
+			}
+
+			if (string.IsNullOrEmpty(lastName))
+			{
+				return Result.Failure<Employee>("The employee last name must be specified");
+			}
+
+			if (position is null)
+			{
+				return Result.Failure<Employee>("The employee position must be specified");
+			}
+
+			return new Employee(Guid.NewGuid(), firstName, lastName, patronymic, position);
 		}
-
 	}
-
 }
