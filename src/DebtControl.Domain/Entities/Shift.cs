@@ -12,5 +12,7 @@ namespace DebtControl.Domain.Entities
 
 		public Guid EmployeeId { get; set; }
 		public Employee Employee { get; set; }
+
+		public DateTime CreatedAt { get; set; }
 	}
 }

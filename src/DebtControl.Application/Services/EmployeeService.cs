@@ -43,9 +43,9 @@ namespace DebtControl.Application.Services
 				return Result.Failure<EmployeeDto>(employeeResult.Error);
 			}
 
-			var createdEmployee = await _employeeRepository.CreateEmployee(employeeResult.Value, ct);
+			await _employeeRepository.CreateEmployee(employeeResult.Value, ct);
 
-			return Result.Success(createdEmployee.ToEmployeeDto());
+			return Result.Success(employeeResult.Value.ToEmployeeDto());
 		}
 
 		public async Task<Result> DeleteEmployee(Guid employeeId, CancellationToken ct)

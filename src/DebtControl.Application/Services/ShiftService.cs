@@ -38,8 +38,10 @@ namespace DebtControl.Application.Services
 			var newShift = new Shift()
 			{
 				StartTime = startTime,
-				EmployeeId = employeeId
+				EmployeeId = employeeId,
+				CreatedAt = DateTime.Now
 			};
+
 
 			await _shiftRepository.CreateShift(newShift, ct);
 
