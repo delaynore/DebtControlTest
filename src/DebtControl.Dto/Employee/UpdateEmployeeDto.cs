@@ -2,7 +2,7 @@
 
 namespace DebtControl.Dto.Employee
 {
-	public record CreateEmployeeDto(
+	public record UpdateEmployeeDto(
 		[Required] string FirstName, 
 		[Required] string LastName, 
 		string Patronymic, 
