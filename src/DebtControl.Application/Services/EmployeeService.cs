@@ -74,7 +74,7 @@ namespace DebtControl.Application.Services
 
 				if (position is null)
 				{
-					return Result.Failure<ICollection<EmployeeDto>>("Position with specified Id('{positionId}') does not exist");
+					return Result.Failure<ICollection<EmployeeDto>>($"Position with specified Id('{positionId}') does not exist");
 				}
 				
 				return Result.Success((await _employeeRepository.GetEmployeesByPosition(positionId.Value, ct)).ToEmployeeDtos());

@@ -35,13 +35,12 @@ namespace DebtControl.Infrastructure.Repositories
 			await _dbContext.SaveChangesAsync(ct);
 		}
 
-		public Task<ICollection<Employee>> GetAllEmployees(CancellationToken ct)
+		public async Task<ICollection<Employee>> GetAllEmployees(CancellationToken ct)
 		{
-			return Task.FromResult(
-				(ICollection<Employee>)_dbContext.Employees
+			return await _dbContext.Employees
 					.AsNoTracking()
 					.Include(x => x.Position)
-					.ToListAsync(ct));
+					.ToListAsync(ct);
 		}
 
 		public Task<Employee> GetEmployeeById(Guid id, CancellationToken ct)
@@ -51,14 +50,13 @@ namespace DebtControl.Infrastructure.Repositories
 				.FirstOrDefaultAsync(x => x.Id.Equals(id), ct);
 		}
 
-		public Task<ICollection<Employee>> GetEmployeesByPosition(int positionId, CancellationToken ct)
+		public async Task<ICollection<Employee>> GetEmployeesByPosition(int positionId, CancellationToken ct)
 		{
-			return Task.FromResult(
-				(ICollection<Employee>)_dbContext.Employees
+			return await _dbContext.Employees
 					.AsNoTracking()
 					.Include(x => x.Position)
 					.Where(x => x.PositionId == positionId)
-					.ToListAsync(ct));
+					.ToListAsync(ct);
 		}
 
 		public async Task UpdateEmployee(Employee updatedEmployee, CancellationToken ct)
