@@ -14,7 +14,7 @@ namespace DebtControl.Infrastructure.Configurations
 
 			builder.HasOne(e => e.Position)
 				.WithMany(e => e.Employees)
-				.HasForeignKey(e => e.Id);
+				.HasForeignKey(e => e.PositionId);
 
 		}
 	}

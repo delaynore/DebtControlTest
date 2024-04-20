@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DebtControl.Application\DebtControl.Application.csproj" />
+    <ProjectReference Include="..\DebtControl.Dto\DebtControl.Dto.csproj" />
     <ProjectReference Include="..\DebtControl.Infrastructure\DebtControl.Infrastructure.csproj" />
   </ItemGroup>
 

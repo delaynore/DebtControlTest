@@ -21,6 +21,8 @@ namespace DebtControl.Domain.Entities
 
 		public ICollection<Shift> Shifts { get; set; } = new List<Shift>();
 
+		private Employee() { }
+
 		private Employee(Guid id, string firstName, string lastName, string patronymic, Position position)
 		{
 			Id = id;

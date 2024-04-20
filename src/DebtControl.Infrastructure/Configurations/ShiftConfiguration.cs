@@ -13,7 +13,7 @@ namespace DebtControl.Infrastructure.Configurations
 			builder.Property(e => e.EndTime);
 			builder.Property(e => e.HoursWorked);
 
-			builder.HasOne(e => e.Employee).WithMany(e => e.Shifts).HasForeignKey(e => e.Id);
+			builder.HasOne(e => e.Employee).WithMany(e => e.Shifts).HasForeignKey(e => e.EmployeeId);
 		}
 	}
 }
