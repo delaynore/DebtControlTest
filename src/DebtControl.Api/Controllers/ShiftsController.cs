@@ -1,5 +1,6 @@
 ﻿using DebtControl.Application.Services;
 using DebtControl.Dto.Shift;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,6 +16,14 @@ namespace DebtControl.Api.Controllers
 			_shiftService = shiftService;
 		}
 
+
+		/// <summary>
+		/// Starts the employee shift.
+		/// </summary>
+		/// <param name="createShiftDto">The data to start shift.</param>
+		/// <returns>The result of API.</returns>
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[HttpPost("start")]
 		public async Task<IActionResult> StartShift(StartShiftDto createShiftDto)
 		{
@@ -25,6 +34,13 @@ namespace DebtControl.Api.Controllers
 			return ApiResult(result);
 		}
 
+		/// <summary>
+		/// Ends the employee shift.
+		/// </summary>
+		/// <param name="endShiftDto">The data to end shift.</param>
+		/// <returns>The result of API.</returns>
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[HttpPost("end")]
 		public async Task<IActionResult> EndShift(EndShiftDto endShiftDto)
 		{
