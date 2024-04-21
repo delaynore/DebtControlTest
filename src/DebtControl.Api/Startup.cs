@@ -1,3 +1,4 @@
+using DebtControl.Api.Middleware;
 using DebtControl.Application;
 using DebtControl.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -44,6 +45,8 @@ namespace DebtControl.Api
 			}
 
 			app.UseHttpsRedirection();
+
+			app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 			app.UseRouting();
 
