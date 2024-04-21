@@ -15,12 +15,13 @@ namespace DebtControl.Application.Extensions
 				employee.FirstName,
 				employee.LastName,
 				employee.Patronymic,
-				employee.Position.ToPositionDto());
+				employee.Position.ToPositionDto(),
+				employee.Shifts.ToShiftDtos());
 		}
 
-		public static ICollection<EmployeeDto> ToEmployeeDtos(this ICollection<Employee> employees)
+		public static IEnumerable<EmployeeDto> ToEmployeeDtos(this IEnumerable<Employee> employees)
 		{
-			return employees.Select(ToEmployeeDto).ToList();
+			return employees.Select(ToEmployeeDto);
 		}
 	}
 }

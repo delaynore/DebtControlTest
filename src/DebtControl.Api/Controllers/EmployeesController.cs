@@ -60,8 +60,8 @@ namespace DebtControl.Api.Controllers
 		/// <returns>Employees.</returns>
 		[ProducesResponseType(typeof(ICollection<EmployeeDto>), StatusCodes.Status200OK)]
 		[ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
-		[HttpGet("{positionId?}")]
-		public async Task<IActionResult> GetEmployees([FromRoute] int? positionId)
+		[HttpGet()]
+		public async Task<IActionResult> GetEmployees(int? positionId = null)
 		{
 			var result = await _employeeService.GetAllEmployees(positionId, CancellationToken.None);
 

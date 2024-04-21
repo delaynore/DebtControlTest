@@ -24,7 +24,7 @@ namespace DebtControl.Infrastructure.Repositories
 			await _dbContext.SaveChangesAsync(ct);
 		}
 
-		public async Task<ICollection<Shift>> GetEmployeeShifts(Guid employeeId, CancellationToken ct)
+		public async Task<IEnumerable<Shift>> GetEmployeeShifts(Guid employeeId, CancellationToken ct)
 		{
 			return await _dbContext.Shifts
 					.AsNoTracking()

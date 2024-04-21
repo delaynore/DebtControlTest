@@ -4,13 +4,20 @@ using System.Threading.Tasks;
 
 namespace DebtControl.Api.Middleware
 {
-	public sealed class ExceptionHandlerMiddleware : IMiddleware
+	public sealed class ExceptionHandlerMiddleware
 	{
-		public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+
+		private readonly RequestDelegate _next;
+		public ExceptionHandlerMiddleware(RequestDelegate next)
+		{
+			_next = next;
+		}
+
+		public async Task InvokeAsync(HttpContext context)
 		{
 			try
 			{
-				await next(context);
+				await _next(context);
 			}
 			catch (Exception ex)
 			{

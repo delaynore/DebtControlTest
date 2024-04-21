@@ -12,9 +12,9 @@ namespace DebtControl.Application.Extensions
 			return new PositionDto(position.Id, position.Name);
 		}
 
-		public static ICollection<PositionDto> ToPositionDtos(this ICollection<Position> positions)
+		public static IEnumerable<PositionDto> ToPositionDtos(this IEnumerable<Position> positions)
 		{
-			return positions.Select(ToPositionDto).ToList();
+			return positions.Select(ToPositionDto);
 		}
 	}
 }

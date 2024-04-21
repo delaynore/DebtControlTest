@@ -10,6 +10,10 @@ namespace DebtControl.Domain.Entities
 
 		public TimeSpan? HoursWorked { get; set; }
 
+		public bool IsMorningSchuduleViolation { get; set; }
+
+		public bool IsEveningScheduleViolation { get; set; }
+
 		public Guid EmployeeId { get; set; }
 		public Employee Employee { get; set; }
 

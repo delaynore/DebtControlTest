@@ -10,7 +10,7 @@ namespace DebtControl.Application.Services
 {
 	public interface IEmployeeService
 	{
-		Task<Result<ICollection<EmployeeDto>>> GetAllEmployees(int? positionId, CancellationToken ct);
+		Task<Result<IEnumerable<EmployeeDto>>> GetAllEmployees(int? positionId, CancellationToken ct);
 
 		Task<Result<EmployeeDto>> GetEmployeeById(Guid employeeId, CancellationToken ct);
 
@@ -19,6 +19,6 @@ namespace DebtControl.Application.Services
 
 		Task<Result> DeleteEmployee(Guid employeeId, CancellationToken ct);
 
-		Task<Result<ICollection<PositionDto>>> GetAllPositions(CancellationToken ct);
+		Task<Result<IEnumerable<PositionDto>>> GetAllPositions(CancellationToken ct);
 	}
 }

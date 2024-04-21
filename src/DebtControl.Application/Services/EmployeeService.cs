@@ -6,6 +6,7 @@ using DebtControl.Dto.Employee;
 using DebtControl.Dto.Position;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -67,23 +68,23 @@ namespace DebtControl.Application.Services
 			return Result.Success();
 		}
 
-		public async Task<Result<ICollection<EmployeeDto>>> GetAllEmployees(int? positionId, CancellationToken ct)
+		public async Task<Result<IEnumerable<EmployeeDto>>> GetAllEmployees(int? positionId, CancellationToken ct)
 		{
 			if (positionId.HasValue) {
 				var position = await _positionRepository.GetPositionById(positionId.Value, ct);
 
 				if (position is null)
 				{
-					return Result.Failure<ICollection<EmployeeDto>>($"Position with specified Id('{positionId}') does not exist");
+					return Result.Failure<IEnumerable<EmployeeDto>>($"Position with specified Id('{positionId}') does not exist");
 				}
 				
 				return Result.Success((await _employeeRepository.GetEmployeesByPosition(positionId.Value, ct)).ToEmployeeDtos());
 			}
-			//maybe return all employee warnings
+
 			return Result.Success((await _employeeRepository.GetAllEmployees(ct)).ToEmployeeDtos());
 		}
 
-		public async Task<Result<ICollection<PositionDto>>> GetAllPositions(CancellationToken ct)
+		public async Task<Result<IEnumerable<PositionDto>>> GetAllPositions(CancellationToken ct)
 		{
 			return Result.Success((await _positionRepository.GetAllPositions(ct)).ToPositionDtos());
 		}

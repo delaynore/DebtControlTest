@@ -40,6 +40,7 @@ namespace DebtControl.Application.Services
 			{
 				StartTime = startShiftDto.StartTime,
 				EmployeeId = startShiftDto.EmployeeId,
+				IsMorningSchuduleViolation = IsScheduleViolation(employee.Position.StartWorkAt, startShiftDto.StartTime),
 				CreatedAt = DateTime.Now
 			};
 
@@ -47,6 +48,16 @@ namespace DebtControl.Application.Services
 			await _shiftRepository.CreateShift(newShift, ct);
 
 			return Result.Success();
+		}
+
+		private static bool IsScheduleViolation(int scheduleAtHour, DateTime actualAtHour, bool isEvening = false)
+		{
+			if (isEvening)
+			{
+				return scheduleAtHour <= actualAtHour.Hour;
+			}
+
+			return scheduleAtHour < actualAtHour.Hour || (scheduleAtHour == actualAtHour.Hour && actualAtHour.Minute != 0);
 		}
 
 		public async Task<Result> EndShiftAsync(EndShiftDto endShiftDto, CancellationToken ct)
@@ -66,12 +77,12 @@ namespace DebtControl.Application.Services
 			}
 
 			lastShift.EndTime = endShiftDto.EndTime;
-			lastShift.HoursWorked = lastShift.StartTime - endShiftDto.EndTime;
+			lastShift.HoursWorked = endShiftDto.EndTime - lastShift.StartTime;
+			lastShift.IsEveningScheduleViolation = IsScheduleViolation(employee.Position.StartWorkAt, endShiftDto.EndTime, true);
 
 			await _shiftRepository.UpdateShift(lastShift, ct);
 
 			return Result.Success();
 		}
-
 	}
 }

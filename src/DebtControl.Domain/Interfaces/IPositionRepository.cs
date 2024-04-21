@@ -7,7 +7,7 @@ namespace DebtControl.Domain.Interfaces
 {
 	public interface IPositionRepository
 	{
-		Task<ICollection<Position>> GetAllPositions(CancellationToken ct);
+		Task<IEnumerable<Position>> GetAllPositions(CancellationToken ct);
 		Task<Position> GetPositionById(int id, CancellationToken ct);
 
 	}

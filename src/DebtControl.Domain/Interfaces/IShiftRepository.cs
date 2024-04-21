@@ -11,7 +11,7 @@ namespace DebtControl.Domain.Interfaces
 		Task CreateShift(Shift shift, CancellationToken ct);
 		Task UpdateShift(Shift shift, CancellationToken ct);
 
-		Task<ICollection<Shift>> GetEmployeeShifts(Guid employeeId, CancellationToken ct);
+		Task<IEnumerable<Shift>> GetEmployeeShifts(Guid employeeId, CancellationToken ct);
 
 		Task<Shift> GetLastShiftAsync(Guid employeeId, CancellationToken ct);
 	}

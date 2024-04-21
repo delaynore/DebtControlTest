@@ -19,7 +19,7 @@ namespace DebtControl.Infrastructure.Repositories
 			_dbContext = dbContext;
 		}
 
-		public async Task<ICollection<Position>> GetAllPositions(CancellationToken ct)
+		public async Task<IEnumerable<Position>> GetAllPositions(CancellationToken ct)
 		{
 			return await _dbContext.Positions.AsNoTracking().ToListAsync(ct);
 		}

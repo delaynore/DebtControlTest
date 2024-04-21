@@ -8,8 +8,8 @@ namespace DebtControl.Domain.Interfaces
 {
 	public interface IEmployeeRepository
 	{
-		Task<ICollection<Employee>> GetAllEmployees(CancellationToken ct);
-		Task<ICollection<Employee>> GetEmployeesByPosition(int position, CancellationToken ct);
+		Task<IEnumerable<Employee>> GetAllEmployees(CancellationToken ct);
+		Task<IEnumerable<Employee>> GetEmployeesByPosition(int position, CancellationToken ct);
 		Task<Employee> GetEmployeeById(Guid id, CancellationToken ct);
 		Task CreateEmployee(Employee newEmployee, CancellationToken ct);
 		Task UpdateEmployee(Employee updatedEmployee, CancellationToken ct);
