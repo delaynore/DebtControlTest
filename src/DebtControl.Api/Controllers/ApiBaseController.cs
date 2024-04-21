@@ -1,4 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
+using DebtControl.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 
@@ -12,11 +13,11 @@ namespace DebtControl.Api.Controllers
 	{
 		protected IActionResult ApiResult<T>(Result<T> result)
 		{
-			return result.IsSuccess ? Ok(result.Value) : BadRequest(result.Error);
+			return result.IsSuccess ? Ok(result.Value) : BadRequest(new BadRequestResponse(result.Error));
 		}
 		protected IActionResult ApiResult(Result result)
 		{
-			return result.IsSuccess ? Ok() : BadRequest(result.Error);
+			return result.IsSuccess ? Ok() : BadRequest(new BadRequestResponse(result.Error));
 		}
 	}
 }

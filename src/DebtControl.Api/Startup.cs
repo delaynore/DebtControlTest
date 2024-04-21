@@ -7,6 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.IO;
+using System.Reflection;
+using System;
 
 namespace DebtControl.Api
 {
@@ -26,6 +29,11 @@ namespace DebtControl.Api
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
+				var basePath = AppContext.BaseDirectory;
+				var xmlPath = Path
+					.Combine(basePath, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+				c.IncludeXmlComments(xmlPath);
+
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "DebtControl.Api", Version = "v1" });
 			});
 

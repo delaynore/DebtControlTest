@@ -1,4 +1,5 @@
-﻿using DebtControl.Application.Services;
+﻿using DebtControl.Api.Models;
+using DebtControl.Application.Services;
 using DebtControl.Dto.Employee;
 using DebtControl.Dto.Position;
 using Microsoft.AspNetCore.Http;
@@ -20,14 +21,14 @@ namespace DebtControl.Api.Controllers
 			_employeeService = employeeService;
 		}
 
-		
+
 		/// <summary>
 		/// Creates an employee.
 		/// </summary>
 		/// <param name="createEmployeeDto">The employee data.</param>
 		/// <returns>The created employee.</returns>
 		[ProducesResponseType(typeof(EmployeeDto), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+		[ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
 		[HttpPost]
 		public async Task<IActionResult> CreateEmployee([FromBody] CreateEmployeeDto createEmployeeDto)
 		{
@@ -43,7 +44,7 @@ namespace DebtControl.Api.Controllers
 		/// <param name="updateEmployeeDto">The updated employee data.</param>
 		/// <returns>The updated employee.</returns>
 		[ProducesResponseType(typeof(EmployeeDto), StatusCodes.Status200OK)]
-		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		[ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
 		[HttpPut("{employeeId?}")]
 		public async Task<IActionResult> UpdateEmployee([FromRoute] Guid employeeId, [FromBody] UpdateEmployeeDto updateEmployeeDto)
 		{
@@ -58,7 +59,7 @@ namespace DebtControl.Api.Controllers
 		/// <param name="positionId">Optional parameter. If specified returns employees with this position.</param>
 		/// <returns>Employees.</returns>
 		[ProducesResponseType(typeof(ICollection<EmployeeDto>), StatusCodes.Status200OK)]
-		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		[ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
 		[HttpGet("{positionId?}")]
 		public async Task<IActionResult> GetEmployees([FromRoute] int? positionId)
 		{
@@ -73,7 +74,7 @@ namespace DebtControl.Api.Controllers
 		/// <param name="employeeId">The Id of employee to delete.</param>
 		/// <returns>The result of API.</returns>
 		[ProducesResponseType(StatusCodes.Status200OK)]
-		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		[ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
 		[HttpDelete("{employeeId}")]
 		public async Task<IActionResult> DeleteEmployee([FromRoute] Guid employeeId)
 		{
@@ -87,7 +88,7 @@ namespace DebtControl.Api.Controllers
 		/// </summary>
 		/// <returns>Positions.</returns>
 		[ProducesResponseType(typeof(ICollection<PositionDto>), StatusCodes.Status200OK)]
-		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		[ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
 		[HttpGet("positions")]
 		public async Task<IActionResult> GetPositions()
 		{
