@@ -32,7 +32,7 @@ namespace DebtControl.Api.Controllers
 		[HttpPost]
 		public async Task<IActionResult> CreateEmployee([FromBody] CreateEmployeeDto createEmployeeDto)
 		{
-			var result = await _employeeService.CreateEmployee(createEmployeeDto, CancellationToken.None);
+			var result = await _employeeService.CreateEmployeeAsync(createEmployeeDto, CancellationToken.None);
 
 			return ApiResult(result);
 		}
@@ -48,7 +48,7 @@ namespace DebtControl.Api.Controllers
 		[HttpPut("{employeeId?}")]
 		public async Task<IActionResult> UpdateEmployee([FromRoute] Guid employeeId, [FromBody] UpdateEmployeeDto updateEmployeeDto)
 		{
-			var result = await _employeeService.UpdateEmployee(employeeId, updateEmployeeDto, CancellationToken.None);
+			var result = await _employeeService.UpdateEmployeeAsync(employeeId, updateEmployeeDto, CancellationToken.None);
 
 			return ApiResult(result);
 		}
@@ -63,8 +63,7 @@ namespace DebtControl.Api.Controllers
 		[HttpGet()]
 		public async Task<IActionResult> GetEmployees(int? positionId = null)
 		{
-			var result = await _employeeService.GetAllEmployees(positionId, CancellationToken.None);
-
+			var result = await _employeeService.GetAllEmployeesAsync(positionId, CancellationToken.None);
 			return ApiResult(result);
 		}
 
@@ -78,7 +77,7 @@ namespace DebtControl.Api.Controllers
 		[HttpDelete("{employeeId}")]
 		public async Task<IActionResult> DeleteEmployee([FromRoute] Guid employeeId)
 		{
-			var result = await _employeeService.DeleteEmployee(employeeId, CancellationToken.None);
+			var result = await _employeeService.DeleteEmployeeAsync(employeeId, CancellationToken.None);
 
 			return ApiResult(result);
 		}
@@ -92,7 +91,7 @@ namespace DebtControl.Api.Controllers
 		[HttpGet("positions")]
 		public async Task<IActionResult> GetPositions()
 		{
-			var result = await _employeeService.GetAllPositions(CancellationToken.None);
+			var result = await _employeeService.GetAllPositionsAsync(CancellationToken.None);
 			return ApiResult(result);
 		}
 	}

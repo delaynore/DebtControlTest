@@ -18,13 +18,13 @@ namespace DebtControl.Infrastructure.Repositories
 			_dbContext = dbContext;
 		}
 
-		public async Task CreateShift(Shift shift, CancellationToken ct)
+		public async Task CreateShiftAsync(Shift shift, CancellationToken ct)
 		{
 			await _dbContext.Shifts.AddAsync(shift, ct);
 			await _dbContext.SaveChangesAsync(ct);
 		}
 
-		public async Task<IEnumerable<Shift>> GetEmployeeShifts(Guid employeeId, CancellationToken ct)
+		public async Task<IEnumerable<Shift>> GetEmployeeShiftsAsync(Guid employeeId, CancellationToken ct)
 		{
 			return await _dbContext.Shifts
 					.AsNoTracking()
@@ -39,7 +39,7 @@ namespace DebtControl.Infrastructure.Repositories
 				.FirstOrDefaultAsync(ct);
 		}
 
-		public async Task UpdateShift(Shift shift, CancellationToken ct)
+		public async Task UpdateShiftAsync(Shift shift, CancellationToken ct)
 		{
 			_dbContext.Shifts.Update(shift);
 			await _dbContext.SaveChangesAsync(ct);

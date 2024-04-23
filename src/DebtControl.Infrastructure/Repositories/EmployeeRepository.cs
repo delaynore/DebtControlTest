@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,13 +19,13 @@ namespace DebtControl.Infrastructure.Repositories
 			_dbContext = dbContext;
 		}
 
-		public async Task CreateEmployee(Employee newEmployee, CancellationToken ct)
+		public async Task CreateEmployeeAsync(Employee newEmployee, CancellationToken ct)
 		{
 			await _dbContext.Employees.AddAsync(newEmployee, ct);
 			await _dbContext.SaveChangesAsync(ct);
 		}
 
-		public async Task DeleteEmployeeById(Guid id, CancellationToken ct)
+		public async Task DeleteEmployeeByIdAsync(Guid id, CancellationToken ct)
 		{
 			var employee = await _dbContext.Employees
 				.FirstOrDefaultAsync(x => x.Id.Equals(id), ct);
@@ -35,7 +34,7 @@ namespace DebtControl.Infrastructure.Repositories
 			await _dbContext.SaveChangesAsync(ct);
 		}
 
-		public async Task<IEnumerable<Employee>> GetAllEmployees(CancellationToken ct)
+		public async Task<IEnumerable<Employee>> GetAllEmployeesAsync(CancellationToken ct)
 		{
 			return await _dbContext.Employees
 					.AsNoTracking()
@@ -44,23 +43,23 @@ namespace DebtControl.Infrastructure.Repositories
 					.ToListAsync(ct);
 		}
 
-		public Task<Employee> GetEmployeeById(Guid id, CancellationToken ct)
+		public Task<Employee> GetEmployeeByIdAsync(Guid id, CancellationToken ct)
 		{
 			return _dbContext.Employees
 				.Include(x => x.Position)
 				.FirstOrDefaultAsync(x => x.Id.Equals(id), ct);
 		}
 
-		public async Task<IEnumerable<Employee>> GetEmployeesByPosition(int positionId, CancellationToken ct)
+		public async Task<IEnumerable<Employee>> GetEmployeesByPositionAsync(int positionId, CancellationToken ct)
 		{
 			return await _dbContext.Employees
 					.AsNoTracking()
 					.Include(x => x.Position)
 					.Where(x => x.PositionId == positionId)
-					.ToListAsync(ct);
+					.ToListAsync();
 		}
 
-		public async Task UpdateEmployee(Employee updatedEmployee, CancellationToken ct)
+		public async Task UpdateEmployeeAsync(Employee updatedEmployee, CancellationToken ct)
 		{
 			_dbContext.Employees.Update(updatedEmployee);
 

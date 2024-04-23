@@ -1,10 +1,7 @@
 ﻿using DebtControl.Domain.Entities;
 using DebtControl.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,14 +16,17 @@ namespace DebtControl.Infrastructure.Repositories
 			_dbContext = dbContext;
 		}
 
-		public async Task<IEnumerable<Position>> GetAllPositions(CancellationToken ct)
+		public async Task<IEnumerable<Position>> GetAllPositionsAsync(CancellationToken ct)
 		{
-			return await _dbContext.Positions.AsNoTracking().ToListAsync(ct);
+			return await _dbContext.Positions
+				.AsNoTracking()
+				.ToListAsync(ct);
 		}
 
-		public Task<Position> GetPositionById(int id, CancellationToken ct)
+		public Task<Position> GetPositionByIdAsync(int id, CancellationToken ct)
 		{
-			return _dbContext.Positions.SingleOrDefaultAsync(x=>x.Id == id, ct);
+			return _dbContext.Positions
+				.SingleOrDefaultAsync(x=>x.Id == id, ct);
 		}
 	}
 }

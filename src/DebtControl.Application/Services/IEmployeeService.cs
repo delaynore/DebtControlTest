@@ -10,15 +10,15 @@ namespace DebtControl.Application.Services
 {
 	public interface IEmployeeService
 	{
-		Task<Result<IEnumerable<EmployeeDto>>> GetAllEmployees(int? positionId, CancellationToken ct);
+		Task<Result<IEnumerable<EmployeeDto>>> GetAllEmployeesAsync(int? positionId, CancellationToken ct);
 
-		Task<Result<EmployeeDto>> GetEmployeeById(Guid employeeId, CancellationToken ct);
+		Task<Result<EmployeeDto>> GetEmployeeByIdAsync(Guid employeeId, CancellationToken ct);
 
-		Task<Result<EmployeeDto>> CreateEmployee(CreateEmployeeDto employeeDto, CancellationToken ct);
-		Task<Result<EmployeeDto>> UpdateEmployee(Guid employeeId, UpdateEmployeeDto updateEmployeeDto, CancellationToken ct);
+		Task<Result<EmployeeDto>> CreateEmployeeAsync(CreateEmployeeDto employeeDto, CancellationToken ct);
+		Task<Result<EmployeeDto>> UpdateEmployeeAsync(Guid employeeId, UpdateEmployeeDto updateEmployeeDto, CancellationToken ct);
 
-		Task<Result> DeleteEmployee(Guid employeeId, CancellationToken ct);
+		Task<Result> DeleteEmployeeAsync(Guid employeeId, CancellationToken ct);
 
-		Task<Result<IEnumerable<PositionDto>>> GetAllPositions(CancellationToken ct);
+		Task<Result<IEnumerable<PositionDto>>> GetAllPositionsAsync(CancellationToken ct);
 	}
 }

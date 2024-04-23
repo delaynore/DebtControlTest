@@ -22,7 +22,7 @@ namespace DebtControl.Application.Services
 
 		public async Task<Result> StartShiftAsync(StartShiftDto startShiftDto, CancellationToken ct)
 		{
-			var employee = await _employeeRepository.GetEmployeeById(startShiftDto.EmployeeId, ct);
+			var employee = await _employeeRepository.GetEmployeeByIdAsync(startShiftDto.EmployeeId, ct);
 
 			if (employee is null)
 			{
@@ -45,7 +45,7 @@ namespace DebtControl.Application.Services
 			};
 
 
-			await _shiftRepository.CreateShift(newShift, ct);
+			await _shiftRepository.CreateShiftAsync(newShift, ct);
 
 			return Result.Success();
 		}
@@ -62,7 +62,7 @@ namespace DebtControl.Application.Services
 
 		public async Task<Result> EndShiftAsync(EndShiftDto endShiftDto, CancellationToken ct)
 		{
-			var employee = await _employeeRepository.GetEmployeeById(endShiftDto.EmployeeId, ct);
+			var employee = await _employeeRepository.GetEmployeeByIdAsync(endShiftDto.EmployeeId, ct);
 
 			if (employee is null)
 			{
@@ -80,7 +80,7 @@ namespace DebtControl.Application.Services
 			lastShift.HoursWorked = endShiftDto.EndTime - lastShift.StartTime;
 			lastShift.IsEveningScheduleViolation = IsScheduleViolation(employee.Position.StartWorkAt, endShiftDto.EndTime, true);
 
-			await _shiftRepository.UpdateShift(lastShift, ct);
+			await _shiftRepository.UpdateShiftAsync(lastShift, ct);
 
 			return Result.Success();
 		}

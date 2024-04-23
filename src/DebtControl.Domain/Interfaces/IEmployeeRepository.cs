@@ -8,11 +8,11 @@ namespace DebtControl.Domain.Interfaces
 {
 	public interface IEmployeeRepository
 	{
-		Task<IEnumerable<Employee>> GetAllEmployees(CancellationToken ct);
-		Task<IEnumerable<Employee>> GetEmployeesByPosition(int position, CancellationToken ct);
-		Task<Employee> GetEmployeeById(Guid id, CancellationToken ct);
-		Task CreateEmployee(Employee newEmployee, CancellationToken ct);
-		Task UpdateEmployee(Employee updatedEmployee, CancellationToken ct);
-		Task DeleteEmployeeById(Guid id, CancellationToken ct);
+		Task<IEnumerable<Employee>> GetAllEmployeesAsync(CancellationToken ct);
+		Task<IEnumerable<Employee>> GetEmployeesByPositionAsync(int position, CancellationToken ct);
+		Task<Employee> GetEmployeeByIdAsync(Guid id, CancellationToken ct);
+		Task CreateEmployeeAsync(Employee newEmployee, CancellationToken ct);
+		Task UpdateEmployeeAsync(Employee updatedEmployee, CancellationToken ct);
+		Task DeleteEmployeeByIdAsync(Guid id, CancellationToken ct);
 	}
 }
